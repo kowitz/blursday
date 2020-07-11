@@ -3,8 +3,42 @@
   <head>
     <meta charset="utf-8">
     <title>Blursday.app</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    <style media="screen">
+      body, html {
+        height: 100%;
+      }
+      body {
+        margin: 0;
+        padding: 0;
+        background: #00BFD8;
+        font-family: 'Bebas Neue';
+      }
+      .message {
+        display: flex;
+        height: 100%;
+        align-items: center;
+        justify-content: center;
+        color: #FFEA00;
+        font-size: 9vw;
+      }
+    </style>
   </head>
   <body>
-    Today is Blursday!
+    <div class="message">
+      <div>Today is <span id="day">___</span>.</div>
+    </div>
+    <script type="text/javascript">
+      day = {
+        0: "Sunday",
+        1: "Monday",
+        2: "Tuesday",
+        3: "Wednesday",
+        4: "Thursday",
+        5: "Friday",
+        6: "Saturday",
+      }[(new Date()).getDay()];
+      document.getElementById('day').innerHTML = day;
+    </script>
   </body>
 </html>
