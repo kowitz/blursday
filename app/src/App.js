@@ -3,8 +3,8 @@ import { observer } from "mobx-react-lite";
 import "./App.css";
 
 import AppState from "./AppState.js";
-import Home from "./routes/home.js";
-import Settings from "./routes/settings.js";
+import Home from "./components/Home.js";
+import Settings from "./components/Settings.js";
 
 const appState = new AppState();
 

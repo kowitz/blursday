@@ -1,6 +1,6 @@
-import { observer } from "mobx-react-lite";
+import style from "./Home.module.css";
 
-import style from "./home.module.css";
+import ProgressBar from "./ProgressBar.js";
 
 const DAYS_OF_WEEK = {
   0: "Sunday",
@@ -12,19 +12,30 @@ const DAYS_OF_WEEK = {
   6: "Saturday",
 };
 
-const Home = observer(({ appState }) => {
+const Home = ({ appState }) => {
   const today = DAYS_OF_WEEK[new Date().getDay()];
   return (
     <div className={style.layout}>
-      <div className={style.header}>Header</div>
       <div className={style.day} style={{ color: appState.color }}>
-        {today}
+        <div className={style.dayText}>{today}</div>
       </div>
-      <div className={style.footer}>
+      <Footer appState={appState} />
+    </div>
+  );
+};
+
+const Footer = ({ appState }) => {
+  return (
+    <div className={style.footer}>
+      <div>TODO: Color</div>
+      <div className={style.progress}>
+        <ProgressBar appState={appState} />
+      </div>
+      <div>
         <button onClick={() => appState.navigate("SETTINGS")}>Settings</button>
       </div>
     </div>
   );
-});
+};
 
 export default Home;

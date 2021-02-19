@@ -1,13 +1,13 @@
 import { observer } from "mobx-react-lite";
 
-import style from "./settings.module.css";
+import style from "./Settings.module.css";
 
 const COLOR_THEMES = [
   { id: "default", name: "Default" },
   { id: "blackAndWhite", name: "Black & White" },
 ];
 
-const Settings = observer(({ appState }) => {
+const Settings = ({ appState }) => {
   return (
     <div>
       <button onClick={() => appState.navigate("HOME")}>Back home</button>
@@ -23,7 +23,7 @@ const Settings = observer(({ appState }) => {
       ))}
     </div>
   );
-});
+};
 
 const ColorSwatch = observer(({ appState, colorId, name }) => {
   const swatchChanged = (e) => {

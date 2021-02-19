@@ -4,7 +4,7 @@ class AppState {
   view = "HOME";
 
   colorTheme = "default";
-  blur = "low";
+  progressPeriod = "year";
 
   navigate(view) {
     this.view = view;
@@ -14,8 +14,12 @@ class AppState {
     this.colorTheme = c;
   }
 
+  setProgressPeriod(p) {
+    this.progressPeriod = p;
+  }
+
   constructor() {
-    let fieldsToPersist = ["colorTheme", "blur"];
+    let fieldsToPersist = ["colorTheme", "progressPeriod"];
     hydrate(this, fieldsToPersist);
     makeAutoObservable(this);
     persist(this, fieldsToPersist);

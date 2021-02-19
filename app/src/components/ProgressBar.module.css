@@ -1,0 +1,16 @@
+.progressBar {
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 32px;
+  width: 100%;
+  height: 32px;
+  padding: 8px;
+}
+.progressBar:hover {
+  background-color: rgba(0, 0, 0, 0.25);
+}
+
+.progressBarInner {
+  background-color: #fff;
+  height: 16px;
+  border-radius: 16px;
+}
