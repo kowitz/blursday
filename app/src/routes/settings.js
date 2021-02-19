@@ -2,22 +2,33 @@ import { observer } from "mobx-react-lite";
 
 import style from "./settings.module.css";
 
+const COLOR_THEMES = [
+  { id: "default", name: "Default" },
+  { id: "blackAndWhite", name: "Black & White" },
+];
+
 const Settings = observer(({ appState }) => {
   return (
     <div>
       <button onClick={() => appState.navigate("HOME")}>Back home</button>
       <h1>Settings</h1>
       <h4>Color</h4>
-      <ColorSwatch appState={appState} color="white" name="White" />
-      <ColorSwatch appState={appState} color="red" name="Red" />
+      {COLOR_THEMES.map((c) => (
+        <ColorSwatch
+          appState={appState}
+          colorId={c.id}
+          name={c.name}
+          key={c.id}
+        />
+      ))}
     </div>
   );
 });
 
-const ColorSwatch = observer(({ appState, color, name }) => {
+const ColorSwatch = observer(({ appState, colorId, name }) => {
   const swatchChanged = (e) => {
     if (e.target.checked) {
-      appState.color = color;
+      appState.setColorTheme(colorId);
     }
   };
 
@@ -26,12 +37,12 @@ const ColorSwatch = observer(({ appState, color, name }) => {
       <input
         type="radio"
         name="ColorSwatch"
-        value={color}
-        id={color}
-        checked={appState.color === color}
+        value={colorId}
+        id={colorId}
+        checked={appState.colorTheme === colorId}
         onChange={swatchChanged}
       />
-      <label htmlFor={color}>{name}</label>
+      <label htmlFor={colorId}>{name}</label>
     </div>
   );
 });

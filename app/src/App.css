@@ -20,3 +20,13 @@ body {
 #root {
   height: 100%;
 }
+
+.colorTheme--default {
+  background-color: #00bfd8;
+  color: #ffea00;
+}
+
+.colorTheme--blackAndWhite {
+  background-color: #000;
+  color: #fff;
+}
