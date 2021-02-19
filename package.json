@@ -1,0 +1,9 @@
+{
+  "name": "Blursday.app",
+  "version": "0.1.0",
+  "description": "Remember the day of week",
+  "main": "index.js",
+  "repository": "git@github.com:kowitz/blursday.git",
+  "author": "Braden Kowitz <kowitz@gmail.com>",
+  "license": "MIT"
+}
