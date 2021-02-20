@@ -1,6 +1,6 @@
 {
-  "name": "Blursday.app",
-  "description": "Remember the day of week",
+  "name": "blursday",
+  "description": "Blursday.app - Remember the day of week",
   "version": "0.1.0",
   "private": true,
   "repository": "git@github.com:kowitz/blursday.git",
