@@ -1,28 +1,33 @@
 import style from "./ColorThemePopup.module.css";
 
-const COLOR_THEMES = [
-  { id: "default", name: "Default" },
-  { id: "blackAndWhite", name: "Black & White" },
-];
-
 const ColorThemePopup = ({ appState }) => {
   return (
     <div className={style.popup}>
-      {COLOR_THEMES.map((c) => (
-        <ColorSwatch id={c.id} key={c.id} name={c.name} appState={appState} />
+      {appState.settings.colorTheme.options.map((c) => (
+        <ColorSwatch key={c.id} colorOption={c} appState={appState} />
       ))}
     </div>
   );
 };
 
-const ColorSwatch = ({ id, name, appState }) => {
-  const swatchStyle = [
-    style.swatch,
-    `colorTheme--${id}`,
-    "colorThemeBackgroundFill",
-  ].join(" ");
+const ColorSwatch = ({ colorOption, appState }) => {
+  const classNames = [style.swatch];
+  if (colorOption === appState.settings.colorTheme.current)
+    classNames.push(style.swatchSelected);
+  console.log(style);
 
-  return <div className={swatchStyle} title={name}></div>;
+  function select() {
+    appState.settings.colorTheme.selectOption(colorOption);
+  }
+
+  return (
+    <div
+      className={classNames.join(" ")}
+      title={colorOption.name}
+      style={{ backgroundColor: colorOption.backgroundColor }}
+      onClick={select}
+    ></div>
+  );
 };
 
 export default ColorThemePopup;

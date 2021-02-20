@@ -5,29 +5,37 @@ import { MdCheck } from "react-icons/md";
 import style from "./ProgressBar.module.css";
 
 const ProgressBar = observer(({ appState }) => {
-  let percentComplete = percentYearComplete();
-  if (appState.progressPeriod === "month")
-    percentComplete = percentMonthComplete();
-
+  const percentComplete =
+    appState.settings.progressPeriod.current.percentComplete;
   const barPercentage = `${Math.floor(percentComplete * 100)}%`;
 
+  let outerBarClasses = [style.outerBar];
+  if (appState.settings.colorTheme.current.shadeMode === "light") {
+    outerBarClasses.push(style.outerBarLight);
+  }
+
   const progressBar = (
-    <div className={style.outerBar}>
+    <div
+      className={outerBarClasses.join(" ")}
+      style={{
+        backgroundColor: appState.settings.colorTheme.current.shadeColor,
+      }}
+    >
       <div
-        className={`colorThemeForegroundFill ${style.innerBar}`}
-        style={{ width: barPercentage }}
+        className={style.innerBar}
+        style={{
+          width: barPercentage,
+          backgroundColor: appState.settings.colorTheme.current.foregroundColor,
+        }}
       />
     </div>
   );
 
   const progressBarPopup = (
     <div className={style.progressBarPopup}>
-      <ProgressPeriodMenuItem id="year" label="This Year" appState={appState} />
-      <ProgressPeriodMenuItem
-        id="month"
-        label="This Month"
-        appState={appState}
-      />
+      {appState.settings.progressPeriod.options.map((o) => (
+        <ProgressPeriodMenuItem key={o.id} appState={appState} option={o} />
+      ))}
     </div>
   );
 
@@ -38,12 +46,12 @@ const ProgressBar = observer(({ appState }) => {
   );
 });
 
-const ProgressPeriodMenuItem = observer(({ id, label, appState }) => {
+const ProgressPeriodMenuItem = observer(({ option, appState }) => {
   return (
     <MenuItem
-      checked={appState.progressPeriod === id}
-      label={label}
-      onSelect={() => appState.setProgressPeriod(id)}
+      checked={appState.settings.progressPeriod.current === option}
+      label={option.name}
+      onSelect={() => appState.settings.progressPeriod.selectOption(option)}
     />
   );
 });
@@ -55,23 +63,6 @@ function MenuItem({ checked, label, onSelect }) {
       <div className={style.menuItemLabel}>{label}</div>
     </div>
   );
-}
-
-// Time utilities
-
-function percentYearComplete() {
-  const now = new Date();
-  const yearStart = new Date(now.getFullYear(), 0, 0);
-  return (now - yearStart) / (1000 * 60 * 60 * 24 * 365);
-}
-
-function percentMonthComplete() {
-  const now = new Date();
-  const year = now.getFullYear();
-  const month = now.getMonth();
-  const start = new Date(year, month, 0);
-  const end = new Date(year, month + 1, 0);
-  return (now - start) / (end - start);
 }
 
 export default ProgressBar;

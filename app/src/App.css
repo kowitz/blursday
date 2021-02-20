@@ -20,30 +20,6 @@ body {
   height: 100%;
 }
 
-/* THEMES */
-
-.colorTheme--default {
-  background-color: #00bfd8;
-  color: #ffea00;
-}
-.colorTheme--default .colorThemeForegroundFill {
-  background-color: #ffea00;
-}
-.colorTheme--default .colorThemeBackgroundFill {
-  background-color: #00bfd8;
-}
-
-.colorTheme--blackAndWhite {
-  background-color: #efefef;
-  color: #333;
-}
-.colorTheme--blackAndWhite .colorThemeForegroundFill {
-  background-color: #333;
-}
-.colorTheme--blackAndWhite .colorThemeBackgroundFill {
-  background-color: #efefef;
-}
-
 /* POPUP STYLING */
 
 .popup-content {

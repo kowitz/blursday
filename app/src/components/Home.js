@@ -20,7 +20,10 @@ const Home = ({ appState }) => {
   const today = DAYS_OF_WEEK[new Date().getDay()];
   return (
     <div className={style.layout}>
-      <div className={style.day} style={{ color: appState.color }}>
+      <div
+        className={style.day}
+        style={{ color: appState.settings.colorTheme.current.foregroundColor }}
+      >
         <div className={style.dayText}>{today}</div>
       </div>
       <Footer appState={appState} />
@@ -43,10 +46,7 @@ const Footer = ({ appState }) => {
       <div className={style.progress}>
         <ProgressBar appState={appState} />
       </div>
-      <div
-        className={style.footerIconItem}
-        onClick={() => appState.navigate("SETTINGS")}
-      >
+      <div className={style.footerIconItem}>
         <MdSettings />
       </div>
     </div>

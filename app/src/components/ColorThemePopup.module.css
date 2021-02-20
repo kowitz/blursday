@@ -1,11 +1,16 @@
 .popup {
   padding: 8px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
 }
 
 .swatch {
   width: 24px;
   height: 24px;
   border-radius: 24px;
-  margin: 18px;
+  margin: 12px;
   border: 1px solid #efefef;
+}
+.swatchSelected {
+  box-shadow: 0px 0px 1px 2px #ffffff, 0px 0px 1px 3px #000000;
 }
