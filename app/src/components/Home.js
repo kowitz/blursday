@@ -1,6 +1,10 @@
+import { MdPalette, MdSettings } from "react-icons/md";
+import Popup from "reactjs-popup";
+
 import style from "./Home.module.css";
 
 import ProgressBar from "./ProgressBar.js";
+import ColorThemePopup from "./ColorThemePopup.js";
 
 const DAYS_OF_WEEK = {
   0: "Sunday",
@@ -25,14 +29,25 @@ const Home = ({ appState }) => {
 };
 
 const Footer = ({ appState }) => {
+  const colorFooterIcon = (
+    <div className={style.footerIconItem}>
+      <MdPalette />
+    </div>
+  );
+
   return (
     <div className={style.footer}>
-      <div>TODO: Color</div>
+      <Popup trigger={colorFooterIcon} position="top left" offsetY={8}>
+        <ColorThemePopup appState={appState} />
+      </Popup>
       <div className={style.progress}>
         <ProgressBar appState={appState} />
       </div>
-      <div>
-        <button onClick={() => appState.navigate("SETTINGS")}>Settings</button>
+      <div
+        className={style.footerIconItem}
+        onClick={() => appState.navigate("SETTINGS")}
+      >
+        <MdSettings />
       </div>
     </div>
   );

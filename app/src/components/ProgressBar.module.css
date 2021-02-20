@@ -1,16 +1,49 @@
-.progressBar {
+.outerBar {
   background-color: rgba(0, 0, 0, 0.2);
   border-radius: 32px;
   width: 100%;
-  height: 32px;
+  height: 24px;
   padding: 8px;
 }
-.progressBar:hover {
+.outerBar:hover {
   background-color: rgba(0, 0, 0, 0.25);
 }
 
-.progressBarInner {
-  background-color: #fff;
-  height: 16px;
+.innerBar {
+  height: 8px;
   border-radius: 16px;
+  opacity: 0.8;
+}
+.outerBar:hover .innerBar {
+  opacity: 1;
+}
+
+.progressBarPopup {
+  padding: 8px 0;
+}
+
+.menuItem {
+  display: flex;
+  width: 280px;
+  padding: 8px 0;
+  cursor: pointer;
+  color: #222;
+}
+
+.menuItem:hover {
+  background: #efefef;
+}
+
+.menuItemIcon {
+  margin-left: 16px;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+}
+
+.menuItemLabel {
+  min-height: 24px;
+  display: flex;
+  align-items: center;
 }

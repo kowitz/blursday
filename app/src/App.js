@@ -1,4 +1,6 @@
+import React, { useEffect } from "react";
 import { observer } from "mobx-react-lite";
+import { autorun } from "mobx";
 
 import "./App.css";
 
@@ -12,11 +14,15 @@ const App = observer(() => {
   let ActiveView = Home;
   if (appState.view === "SETTINGS") ActiveView = Settings;
 
+  useEffect(() => {
+    autorun(() => {
+      // TODO: Try putting this on a Theme DOM element instead
+      document.body.className = `colorTheme--${appState.colorTheme}`;
+    });
+  }, []);
+
   return (
-    <div
-      className={`colorTheme--${appState.colorTheme} appFrame`}
-      style={{ height: "100%" }}
-    >
+    <div style={{ height: "100%" }}>
       <ActiveView appState={appState} styles={{ backgroundColor: "#000" }} />
     </div>
   );
