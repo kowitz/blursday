@@ -3,7 +3,7 @@
   "name": "Blursday.app",
   "version": "1.0",
   "chrome_url_overrides": {
-    "newtab": "index.html"
+    "newtab": "new-tab.html"
   },
-  "content_security_policy": "default-src 'self'; script-src 'self'; object-src 'self'"
+  "content_security_policy": "default-src 'self' https://blursday.app; script-src 'self'; object-src 'self'"
 }
