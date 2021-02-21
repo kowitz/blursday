@@ -27,30 +27,5 @@
 
 .progressBarPopup {
   padding: 8px 0;
-}
-
-.menuItem {
-  display: flex;
-  width: 180px;
-  padding: 8px 0;
-  cursor: pointer;
-  color: #222;
-}
-
-.menuItem:hover {
-  background: #efefef;
-}
-
-.menuItemIcon {
-  margin-left: 16px;
-  width: 24px;
-  height: 24px;
-  display: flex;
-  align-items: center;
-}
-
-.menuItemLabel {
-  min-height: 24px;
-  display: flex;
-  align-items: center;
+  width: 220px;
 }

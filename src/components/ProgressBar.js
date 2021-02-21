@@ -1,6 +1,7 @@
 import Popup from "reactjs-popup";
 import { observer } from "mobx-react-lite";
-import { MdCheck } from "react-icons/md";
+
+import { MenuItem, MenuSeparator, MenuTitle } from "./Menu.js";
 
 import style from "./ProgressBar.module.css";
 
@@ -33,6 +34,8 @@ const ProgressBar = observer(({ appState }) => {
 
   const progressBarPopup = (
     <div className={style.progressBarPopup}>
+      <MenuTitle label={`${barPercentage} percent complete`} />
+      <MenuSeparator />
       {appState.settings.progressPeriod.options.map((o) => (
         <ProgressPeriodMenuItem key={o.id} appState={appState} option={o} />
       ))}
@@ -55,14 +58,5 @@ const ProgressPeriodMenuItem = observer(({ option, appState }) => {
     />
   );
 });
-
-function MenuItem({ checked, label, onSelect }) {
-  return (
-    <div className={style.menuItem} onClick={onSelect}>
-      <div className={style.menuItemIcon}>{checked ? <MdCheck /> : null}</div>
-      <div className={style.menuItemLabel}>{label}</div>
-    </div>
-  );
-}
 
 export default ProgressBar;
