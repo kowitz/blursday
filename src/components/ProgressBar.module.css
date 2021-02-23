@@ -3,7 +3,7 @@
   border-radius: 32px;
   width: 100%;
   height: 24px;
-  padding: 8px;
+  padding: 4px;
 }
 .outerBar:hover {
   background-color: rgba(0, 0, 0, 0.25);
@@ -17,8 +17,8 @@
 }
 
 .innerBar {
-  height: 8px;
-  border-radius: 16px;
+  height: 16px;
+  border-radius: 16px 0 0 16px;
   opacity: 0.8;
 }
 .outerBar:hover .innerBar {
