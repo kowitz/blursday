@@ -13,13 +13,22 @@ const COLOR_THEMES = [
     id: "ice",
     name: "Ice",
     backgroundColor: "#efefef",
-    foregroundColor: "#333",
+    foregroundColor: "#666",
+    actionColor: "#00a4b9",
+  },
+  {
+    id: "fog",
+    name: "Carl the fog",
+    backgroundColor: "#B4BABF",
+    foregroundColor: "#D5DADE",
+    actionColor: "#444",
   },
   {
     id: "blueAndYellow",
     name: "Cheerful Ikea",
     backgroundColor: "#00bfd8",
     foregroundColor: "#ffea00",
+    actionColor: "#00a4b9",
   },
   {
     id: "teal",
@@ -46,29 +55,23 @@ const COLOR_THEMES = [
     foregroundColor: "#572828",
   },
   {
-    id: "fog",
-    name: "Carl the fog",
-    backgroundColor: "#B4BABF",
-    foregroundColor: "#D5DADE",
-  },
-  {
     id: "millenial-pink",
     name: "Millenial Pink",
     backgroundColor: "#E8C5C4",
     foregroundColor: "#949494",
+    actionColor: "#d28c8a",
     shadeMode: SHADE_MODE.LIGHT,
   },
 ];
 
 class ColorTheme {
-  shadeMode = SHADE_MODE.DARK;
-
   constructor({
     id,
     isDefault,
     name,
     backgroundColor,
     foregroundColor,
+    actionColor,
     shadeMode,
   }) {
     extendObservable(this, {
@@ -77,7 +80,8 @@ class ColorTheme {
       name,
       backgroundColor,
       foregroundColor,
-      shadeMode,
+      actionColor: actionColor ? actionColor : backgroundColor,
+      shadeMode: shadeMode ? shadeMode : SHADE_MODE.DARK,
     });
     // Todo, add overrides
   }

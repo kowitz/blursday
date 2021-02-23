@@ -20,7 +20,6 @@ class Setting {
   }
 
   selectOption(option) {
-    console.log(`Setting ${this.storageKey} to ${option.id}`);
     this.current = option;
   }
 
@@ -46,7 +45,6 @@ class Setting {
         );
         return;
       }
-      console.log(`Saving ${this.storageKey} = ${this.current.id}`);
       localStorage.setItem(this.storageKey, this.current.id);
     });
   }
