@@ -1,12 +1,25 @@
+.menu {
+  width: 200px;
+  padding: 8px 0;
+}
+
 .menuItem {
   display: flex;
+  width: 100%;
   padding: 8px 0;
   cursor: pointer;
   color: #222;
 }
 
-.menuItem:hover {
-  background: #efefef;
+.menuItem:focus {
+  outline: none;
+  background-color: #efefef;
+}
+.menu:hover .menuItem:focus {
+  background-color: transparent;
+}
+.menu:hover .menuItem:hover {
+  background-color: #efefef;
 }
 
 .menuItemIcon {

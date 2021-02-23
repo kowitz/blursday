@@ -24,8 +24,3 @@
 .outerBar:hover .innerBar {
   opacity: 1;
 }
-
-.progressBarPopup {
-  padding: 8px 0;
-  width: 220px;
-}

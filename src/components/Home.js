@@ -1,10 +1,12 @@
-import { MdPalette, MdSettings } from "react-icons/md";
+import { MdPalette, MdMoreHoriz, MdChat } from "react-icons/md";
+import { IoLogoGithub, IoLogoTwitter } from "react-icons/io";
 import Popup from "reactjs-popup";
-
-import style from "./Home.module.css";
 
 import ProgressBar from "./ProgressBar.js";
 import ColorThemePopup from "./ColorThemePopup.js";
+import { Menu, MenuItem } from "./Menu.js";
+
+import style from "./Home.module.css";
 
 const DAYS_OF_WEEK = {
   0: "Sunday",
@@ -60,9 +62,15 @@ const Promo = ({ appState }) => {
 
 const Footer = ({ appState }) => {
   const colorFooterIcon = (
-    <div className={style.footerIconItem}>
+    <button className={style.footerIconItem}>
       <MdPalette />
-    </div>
+    </button>
+  );
+
+  const moreFooterIcon = (
+    <button className={style.footerIconItem}>
+      <MdMoreHoriz />
+    </button>
   );
 
   return (
@@ -73,10 +81,35 @@ const Footer = ({ appState }) => {
       <div className={style.progress}>
         <ProgressBar appState={appState} />
       </div>
-      <div className={style.footerIconItem}>
-        <MdSettings />
-      </div>
+      <Popup trigger={moreFooterIcon} position="top right" offsetY={8}>
+        <MorePopup />
+      </Popup>
     </div>
+  );
+};
+
+const MorePopup = () => {
+  const shareText = encodeURIComponent(
+    "Can't remember what day of week it is?\nTry Blursday.app"
+  );
+  return (
+    <Menu>
+      <MenuItem
+        icon={<IoLogoTwitter />}
+        label="Tweet"
+        href={`https://twitter.com/intent/tweet?text=${shareText}`}
+      />
+      <MenuItem
+        icon={<MdChat />}
+        label="Send feedback"
+        href="mailto:hello@blursday.app"
+      />
+      <MenuItem
+        icon={<IoLogoGithub />}
+        label="Open Source"
+        href="https://github.com/kowitz/blursday"
+      />
+    </Menu>
   );
 };
 
