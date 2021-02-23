@@ -8,6 +8,9 @@ import { Menu, MenuItem } from "./Menu.js";
 
 import style from "./Home.module.css";
 
+const CHROME_STORE_URL =
+  "https://chrome.google.com/webstore/detail/blursday/eddicpleilcpgaeclclneidpnjfiiebm";
+
 const DAYS_OF_WEEK = {
   0: "Sunday",
   1: "Monday",
@@ -50,7 +53,7 @@ const Promo = ({ appState }) => {
       <p>Get Blursday to see this page each time you open a new browser tab.</p>
       {chromeOnlyNotice}
       <a
-        href="https://chrome.google.com/webstore"
+        href={CHROME_STORE_URL}
         className={style.button}
         style={{ outlineColor: actionColor, color: actionColor }}
       >
