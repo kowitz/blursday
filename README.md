@@ -2,7 +2,7 @@
 
 Get Blursday to see this page each time you open a new browser tab.
 
-[Blursday.app](blursday.app)
+🌈 [Blursday.app](https://blursday.app)
 
 ### What's all this then?
 
