@@ -14,7 +14,6 @@ const ColorSwatch = ({ colorOption, appState }) => {
   const classNames = [style.swatch];
   if (colorOption === appState.settings.colorTheme.current)
     classNames.push(style.swatchSelected);
-  console.log(style);
 
   function select() {
     appState.settings.colorTheme.selectOption(colorOption);
