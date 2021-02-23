@@ -20,12 +20,12 @@ const ColorSwatch = ({ colorOption, appState }) => {
   }
 
   return (
-    <div
+    <button
       className={classNames.join(" ")}
       title={colorOption.name}
       style={{ backgroundColor: colorOption.backgroundColor }}
       onClick={select}
-    ></div>
+    ></button>
   );
 };
 

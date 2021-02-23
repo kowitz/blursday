@@ -1,7 +1,7 @@
 import Popup from "reactjs-popup";
 import { observer } from "mobx-react-lite";
 
-import { MenuItem, MenuSeparator, MenuTitle } from "./Menu.js";
+import { Menu, MenuItem, MenuSeparator, MenuTitle } from "./Menu.js";
 
 import style from "./ProgressBar.module.css";
 
@@ -33,13 +33,13 @@ const ProgressBar = observer(({ appState }) => {
   );
 
   const progressBarPopup = (
-    <div className={style.progressBarPopup}>
+    <Menu>
       <MenuTitle label={`${barPercentage} percent complete`} />
       <MenuSeparator />
       {appState.settings.progressPeriod.options.map((o) => (
         <ProgressPeriodMenuItem key={o.id} appState={appState} option={o} />
       ))}
-    </div>
+    </Menu>
   );
 
   return (

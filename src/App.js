@@ -7,7 +7,6 @@ import { colorTheme, progressPeriod } from "./settings";
 import "./App.css";
 
 const params = new URLSearchParams(window.location.search);
-console.log(params.get("embeded"));
 
 class AppState {
   settings = { colorTheme, progressPeriod };

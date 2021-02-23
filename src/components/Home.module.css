@@ -28,6 +28,14 @@
   font-size: 24px;
   height: 24px;
 }
+.footerIconItem:focus {
+  outline: none;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+}
+.footerIconItem:hover:focus {
+  background: none;
+}
 
 .progress {
   flex-grow: 1;
@@ -71,7 +79,6 @@
   color: #fff;
   font-size: 16px;
   font-weight: bold;
-  text-decoration: none;
   padding: 8px 16px;
   border-radius: 5px;
   opacity: 0.8;

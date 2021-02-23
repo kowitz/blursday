@@ -2,12 +2,33 @@ import { MdCheck } from "react-icons/md";
 
 import style from "./Menu.module.css";
 
-export function MenuItem({ checked, label, onSelect }) {
-  return (
-    <div className={style.menuItem} onClick={onSelect}>
-      <div className={style.menuItemIcon}>{checked ? <MdCheck /> : null}</div>
+export function Menu({ children }) {
+  return <div className={style.menu}>{children}</div>;
+}
+
+export function MenuItem({ icon, checked, label, onSelect, href }) {
+  let itemIcon = null;
+  if (checked) {
+    itemIcon = <MdCheck />;
+  } else if (icon) {
+    itemIcon = icon;
+  }
+
+  const contents = (
+    <>
+      <div className={style.menuItemIcon}>{itemIcon}</div>
       <div className={style.menuItemLabel}>{label}</div>
-    </div>
+    </>
+  );
+
+  return href ? (
+    <a className={style.menuItem} href={href} target="_none" onClick={onSelect}>
+      {contents}
+    </a>
+  ) : (
+    <button className={style.menuItem} onClick={onSelect}>
+      {contents}
+    </button>
   );
 }
 

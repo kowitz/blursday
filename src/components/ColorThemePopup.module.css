@@ -11,6 +11,20 @@
   margin: 12px;
   border: 1px solid #efefef;
 }
-.swatchSelected {
+.swatch:focus {
+  outline: none;
+  box-shadow: 0px 0px 1px 2px #ffffff, 0px 0px 1px 3px #aaa;
+}
+.popup:hover .swatch:focus {
+  box-shadow: none;
+}
+.popup:hover .swatch:hover {
+  box-shadow: 0px 0px 1px 2px #ffffff, 0px 0px 1px 3px #aaa;
+}
+.swatchSelected,
+.swatchSelected:focus,
+.popup:hover .swatchSelected,
+.popup:hover .swatchSelected:focus,
+.popup:hover .swatchSelected:hover {
   box-shadow: 0px 0px 1px 2px #ffffff, 0px 0px 1px 3px #000000;
 }
