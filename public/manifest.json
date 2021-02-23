@@ -1,6 +1,7 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Blursday",
+  "name": "Blursday.app",
+  "description": "Can't remember the day of week anymore?",
   "icons": [
     {
       "src": "icon-64.png",

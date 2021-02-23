@@ -6,8 +6,15 @@ import { colorTheme, progressPeriod } from "./settings";
 
 import "./App.css";
 
+const params = new URLSearchParams(window.location.search);
+console.log(params.get("embeded"));
+
 class AppState {
   settings = { colorTheme, progressPeriod };
+  context = {
+    isChromeExtensionCapable: !!window.chrome, // TODO: Improve feature detection
+    isEmbeded: params.get("embeded") === "1",
+  };
   constructor() {
     makeAutoObservable(this);
   }
@@ -19,7 +26,6 @@ const appState = new AppState();
 // send the background color to the parent window
 autorun(() => {
   const color = appState.settings.colorTheme.current.backgroundColor;
-  console.log("Posting background color to parent");
   window.parent.postMessage({ backgroundColor: color }, "*");
 });
 

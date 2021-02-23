@@ -20,6 +20,7 @@ const Home = ({ appState }) => {
   const today = DAYS_OF_WEEK[new Date().getDay()];
   return (
     <div className={style.layout}>
+      <Promo appState={appState} />
       <div
         className={style.day}
         style={{ color: appState.settings.colorTheme.current.foregroundColor }}
@@ -27,6 +28,32 @@ const Home = ({ appState }) => {
         <div className={style.dayText}>{today}</div>
       </div>
       <Footer appState={appState} />
+    </div>
+  );
+};
+
+const Promo = ({ appState }) => {
+  if (appState.context.isEmbeded) return null;
+  const actionColor = appState.settings.colorTheme.current.actionColor;
+
+  let chromeOnlyNotice = appState.context.isChromeExtensionCapable ? null : (
+    <div className={style.promoNotice}>
+      This extension only works in Chrome right now.
+    </div>
+  );
+
+  return (
+    <div className={style.promo}>
+      <h1>Can't remember the day of week anymore?</h1>
+      <p>Get Blursday to see this page each time you open a new browser tab.</p>
+      {chromeOnlyNotice}
+      <a
+        href="https://chrome.google.com/webstore"
+        className={style.button}
+        style={{ outlineColor: actionColor, color: actionColor }}
+      >
+        Add to Chrome
+      </a>
     </div>
   );
 };
