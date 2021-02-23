@@ -4,7 +4,7 @@
   "version": "0.1.0",
   "private": true,
   "repository": "git@github.com:kowitz/blursday.git",
-  "author": "Braden Kowitz <kowitz@gmail.com>",
+  "author": "Braden Kowitz <hello@blursday.app>",
   "license": "MIT",
   "dependencies": {
     "mobx": "^6.1.7",
