@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { MdPalette, MdMoreHoriz, MdChat } from "react-icons/md";
 import { IoLogoGithub, IoLogoTwitter } from "react-icons/io";
 import Popup from "reactjs-popup";
+import { observer } from "mobx-react-lite";
 
 import { AppStateContext } from "../App.js";
 import ProgressBar from "./ProgressBar.js";
@@ -13,19 +14,8 @@ import style from "./Home.module.css";
 const CHROME_STORE_URL =
   "https://chrome.google.com/webstore/detail/blursday/eddicpleilcpgaeclclneidpnjfiiebm";
 
-const DAYS_OF_WEEK = {
-  0: "Sunday",
-  1: "Monday",
-  2: "Tuesday",
-  3: "Wednesday",
-  4: "Thursday",
-  5: "Friday",
-  6: "Saturday",
-};
-
-const Home = () => {
+const Home = observer(() => {
   const appState = useContext(AppStateContext);
-  const today = DAYS_OF_WEEK[new Date().getDay()];
   return (
     <div className={style.layout}>
       <Promo />
@@ -33,14 +23,14 @@ const Home = () => {
         className={style.day}
         style={{ color: appState.settings.colorTheme.current.foregroundColor }}
       >
-        <div className={style.dayText}>{today}</div>
+        <div className={style.dayText}>{appState.dayOfWeek}</div>
       </div>
       <Footer />
     </div>
   );
-};
+});
 
-const Promo = () => {
+const Promo = observer(() => {
   const appState = useContext(AppStateContext);
   if (appState.context.isEmbeded) return null;
   const actionColor = appState.settings.colorTheme.current.actionColor;
@@ -65,10 +55,9 @@ const Promo = () => {
       </a>
     </div>
   );
-};
+});
 
 const Footer = () => {
-  const appState = useContext(AppStateContext);
   const colorFooterIcon = (
     <button className={style.footerIconItem}>
       <MdPalette />
