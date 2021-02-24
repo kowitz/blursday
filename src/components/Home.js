@@ -1,7 +1,9 @@
+import { useContext } from "react";
 import { MdPalette, MdMoreHoriz, MdChat } from "react-icons/md";
 import { IoLogoGithub, IoLogoTwitter } from "react-icons/io";
 import Popup from "reactjs-popup";
 
+import { AppStateContext } from "../App.js";
 import ProgressBar from "./ProgressBar.js";
 import ColorThemePopup from "./ColorThemePopup.js";
 import { Menu, MenuItem } from "./Menu.js";
@@ -21,23 +23,25 @@ const DAYS_OF_WEEK = {
   6: "Saturday",
 };
 
-const Home = ({ appState }) => {
+const Home = () => {
+  const appState = useContext(AppStateContext);
   const today = DAYS_OF_WEEK[new Date().getDay()];
   return (
     <div className={style.layout}>
-      <Promo appState={appState} />
+      <Promo />
       <div
         className={style.day}
         style={{ color: appState.settings.colorTheme.current.foregroundColor }}
       >
         <div className={style.dayText}>{today}</div>
       </div>
-      <Footer appState={appState} />
+      <Footer />
     </div>
   );
 };
 
-const Promo = ({ appState }) => {
+const Promo = () => {
+  const appState = useContext(AppStateContext);
   if (appState.context.isEmbeded) return null;
   const actionColor = appState.settings.colorTheme.current.actionColor;
 
@@ -63,7 +67,8 @@ const Promo = ({ appState }) => {
   );
 };
 
-const Footer = ({ appState }) => {
+const Footer = () => {
+  const appState = useContext(AppStateContext);
   const colorFooterIcon = (
     <button className={style.footerIconItem}>
       <MdPalette />
@@ -79,10 +84,10 @@ const Footer = ({ appState }) => {
   return (
     <div className={style.footer}>
       <Popup trigger={colorFooterIcon} position="top left" offsetY={8}>
-        <ColorThemePopup appState={appState} />
+        <ColorThemePopup />
       </Popup>
       <div className={style.progress}>
-        <ProgressBar appState={appState} />
+        <ProgressBar />
       </div>
       <Popup trigger={moreFooterIcon} position="top right" offsetY={8}>
         <MorePopup />
