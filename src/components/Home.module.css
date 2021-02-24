@@ -16,7 +16,14 @@
 .dayText {
   font-weight: 800;
   font-size: max(14px, min(10vw, 20vh));
-  filter: blur(3px);
+  filter: blur(0.4vw);
+  transition-duration: 1500ms;
+  transition-property: filter;
+  user-select: none;
+}
+
+.dayText:hover {
+  filter: blur(0.1px);
 }
 
 .footer {
