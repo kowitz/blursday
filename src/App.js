@@ -1,3 +1,4 @@
+import React from "react";
 import { observer } from "mobx-react-lite";
 import { makeAutoObservable, autorun } from "mobx";
 
@@ -20,6 +21,7 @@ class AppState {
 }
 
 const appState = new AppState();
+export const AppStateContext = React.createContext(appState);
 
 // When embeded in a Chrome Extension new tab,
 // send the background color to the parent window
@@ -36,7 +38,9 @@ const App = observer(() => {
         backgroundColor: appState.settings.colorTheme.current.backgroundColor,
       }}
     >
-      <Home appState={appState} />
+      <AppStateContext.Provider value={appState}>
+        <Home />
+      </AppStateContext.Provider>
     </div>
   );
 });

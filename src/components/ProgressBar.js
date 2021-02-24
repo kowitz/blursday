@@ -1,11 +1,14 @@
+import { useContext } from "react";
 import Popup from "reactjs-popup";
 import { observer } from "mobx-react-lite";
 
+import { AppStateContext } from "../App.js";
 import { Menu, MenuItem, MenuSeparator, MenuTitle } from "./Menu.js";
 
 import style from "./ProgressBar.module.css";
 
-const ProgressBar = observer(({ appState }) => {
+const ProgressBar = observer(() => {
+  const appState = useContext(AppStateContext);
   const percentComplete =
     appState.settings.progressPeriod.current.percentComplete;
   const barPercentage = `${Math.floor(percentComplete * 100)}%`;
@@ -37,7 +40,7 @@ const ProgressBar = observer(({ appState }) => {
       <MenuTitle label={`${barPercentage} percent complete`} />
       <MenuSeparator />
       {appState.settings.progressPeriod.options.map((o) => (
-        <ProgressPeriodMenuItem key={o.id} appState={appState} option={o} />
+        <ProgressPeriodMenuItem key={o.id} option={o} />
       ))}
     </Menu>
   );
@@ -49,7 +52,8 @@ const ProgressBar = observer(({ appState }) => {
   );
 });
 
-const ProgressPeriodMenuItem = observer(({ option, appState }) => {
+const ProgressPeriodMenuItem = observer(({ option }) => {
+  const appState = useContext(AppStateContext);
   return (
     <MenuItem
       checked={appState.settings.progressPeriod.current === option}
